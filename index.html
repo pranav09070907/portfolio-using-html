@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio (Table Layout)</title>
+  <style>
+    :root{
+      --line:#3b3b3b;
+      --head:#f4f4f4;
+      --muted:#666;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: "Georgia", Cambria, "Times New Roman", serif;
+      margin:12px;
+      color:#222;
+      background:#fff;
+    }
+    h1{
+      text-align:center;
+      margin:0 0 10px;
+      font-size:30px;
+    }
+    h3{margin-top:0}
+    a{color:#1a0dab;text-decoration:underline}
+    small, .muted{color:var(--muted)}
+    /* outer frame */
+    .frame{
+      width:100%;
+      border:2px solid var(--line);
+      border-collapse:collapse;
+    }
+    .frame td{
+      border:1px solid var(--line);
+      vertical-align:top;
+    }
+    .band{
+      background:var(--head);
+      padding:18px 12px;
+      text-align:center;
+    }
+    .pad{padding:12px}
+    /* split sections */
+    .split{
+      width:100%;
+      border-collapse:collapse;
+    }
+    .split td{
+      padding:12px;
+      border-right:1px solid var(--line);
+      vertical-align:top;
+    }
+    .split td:last-child{
+      border-right:none;
+    }
+    /* projects table */
+    .projects{
+      width:100%;
+      border:3px double var(--line);
+      border-collapse:collapse;
+      table-layout:fixed;
+    }
+    .projects th{
+      border:2px double var(--line);
+      padding:8px;
+      text-align:center;   /* ✅ headers centered */
+      background:#fafafa;
+    }
+    .projects td{
+      border:2px double var(--line);
+      padding:8px;
+      text-align:left;   /* ✅ data left */
+      vertical-align:middle;
+    }
+    .projects .c1{width:30%}
+    .projects .c2{width:50%}
+    .projects .c3{width:20%}
+    /* testimonial */
+    blockquote{
+      margin:10px 0 4px 0;
+      font-style:italic;
+    }
+    /* form */
+    label{display:inline-block; width:70px}
+    input[type="text"], input[type="email"]{
+      width:220px; padding:5px; border:1px solid var(--line);
+    }
+    textarea{
+      width:100%; max-width:480px; height:90px;
+      padding:6px; border:1px solid var(--line); resize:vertical;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background:#f7f7f7; padding:4px 10px; cursor:pointer;
+      margin-top:6px;
+    }
+    footer{
+      text-align:center; padding:14px 8px; background:var(--head);
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 My Portfolio (Table Layout)</h1>
+
+  <table class="frame">
+    <!-- Welcome / Intro band -->
+    <tr>
+      <td class="band">
+        <h3 style="margin:0 0 6px">👋 Welcome to John Doe's Portfolio</h3>
+        <div class="muted">
+          Email: <a href="mailto:john@example.com">john@example.com</a> |
+          Website: <a href="https://example.com">example.com</a>
+        </div>
+      </td>
+    </tr>
+
+    <!-- About + Skills split with dividing line -->
+    <tr>
+      <td>
+        <table class="split">
+          <tr>
+            <td style="width:50%">
+              <h3>🧭 About Me</h3>
+              <p>
+                Hello! I’m <strong>John Doe</strong>, a creative web developer with a passion for clean code
+                and great UI.<br><br>
+                I specialize in <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+              </p>
+            </td>
+            <td style="width:50%">
+              <h3>🧰 Skills</h3>
+              <ul style="margin:0 0 0 18px">
+                <li>HTML &amp; CSS</li>
+                <li>JavaScript &amp; React</li>
+                <li>Responsive Web Design</li>
+                <li>SEO Optimization</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Projects -->
+    <tr>
+      <td>
+        <div class="pad">
+          <h3>📁 Projects</h3>
+          <table class="projects">
+            <tr>
+              <th class="c1">Project</th>
+              <th class="c2">Description</th>
+              <th class="c3">Tools Used</th>
+            </tr>
+            <tr>
+              <td>Portfolio Website</td>
+              <td>A responsive personal portfolio site.</td>
+              <td>HTML, CSS, JS</td>
+            </tr>
+            <tr>
+              <td>Blog Platform</td>
+              <td>A full-featured blog with user login.</td>
+              <td>HTML, PHP, MySQL</td>
+            </tr>
+            <tr>
+              <td>E-commerce Page</td>
+              <td>A shopping cart with product filter.</td>
+              <td>HTML, CSS, JS</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Testimonials -->
+    <tr>
+      <td>
+        <div class="pad">
+          <h3>💬 Testimonials</h3>
+          <!-- ✅ Content appears clearly below the heading -->
+          <blockquote>
+            "John’s work is outstanding and he delivers on time every time."
+          </blockquote>
+          <div class="muted">– Jane Smith, <em>Happy Client</em></div>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Contact -->
+    <tr>
+      <td>
+        <div class="pad">
+          <h3>📬 Contact Me</h3>
+          <form onsubmit="return false">
+            <p><label for="name">Name:</label>
+               <input id="name" type="text" /></p>
+            <p><label for="email">Email:</label>
+               <input id="email" type="email" /></p>
+            <p>
+              <label for="msg" style="vertical-align:top">Message:</label>
+              <textarea id="msg"></textarea>
+            </p>
+            <!-- Buttons below the message block -->
+            <p style="margin-left:70px">
+              <button class="btn" type="submit">Send</button>
+              <button class="btn" type="reset">Reset</button>
+            </p>
+          </form>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Footer -->
+    <tr>
+      <td>
+        <footer>
+          © 2025 John Doe | Built using pure HTML and tables<br>
+          <span class="muted">Last updated: August 30, 2025</span>
+        </footer>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
